@@ -5,7 +5,7 @@
 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
 		type="javax.sql.DataSource" driverClassName="org.mariadb.jdbc.Driver"
 		username="cafe" password="zkvpqlalfqjsgh"
-		url="jdbc:mariadb://irafe.com:13306/cafe"
+		url="jdbc:mariadb://irafe.com:13306/cafe?allowMultiQueries=true"
 		initialSize="1" maxActive="2" minIdle="1" maxIdle="2" testWhileIdle="true"
 		validationQuery="select 1" timeBetweenEvictionRunsMillis="60000" />
 </Context>
