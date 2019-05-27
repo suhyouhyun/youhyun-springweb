@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <!-- p.291 [리스트 11.18] main 화면 -->
@@ -7,7 +8,7 @@
 <title>메인</title>
 </head>
 <body>
-	<p>환영합니다.</p>
+	<h2>Welcome to Springweb!</h2>
 	<!-- 로그인 여부에 따라 분기 -->
 	<c:choose>
 		<c:when test="${!empty sessionScope.MEMBER }">

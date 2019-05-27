@@ -1,6 +1,7 @@
 
 package com.youhyun.book.chap11;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-/**
- * SpringJdbc를 사용해서 구현
- * 
- * @author Jacob
- */
+
 @Repository
 public class MemberDao {
 
@@ -24,6 +21,8 @@ public class MemberDao {
 	static final String COUNT_ALL = "SELECT count(memberId) count FROM member";
 
 	static final String SELECT_BY_LOGIN = "SELECT memberId, email, password, name FROM member WHERE (email,password) = (?,sha2(?,256))";
+
+	static final String CHANGE_PASSWORD = "UPDATE member SET password=sha2(?,256) WHERE (memberId, password)=(?, sha2(?,256))";
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -59,5 +58,14 @@ public class MemberDao {
 	public Member selectByLogin(String email, String password) {
 		return jdbcTemplate.queryForObject(SELECT_BY_LOGIN, memberRowMapper,
 				email, password);
+	}
+
+	/**
+	 * 비밀번호 변경
+	 */
+	public int changePassword(String memberId, String currentPassword,
+			String newPassword) {
+		return jdbcTemplate.update(CHANGE_PASSWORD, newPassword, memberId,
+				currentPassword);
 	}
 }

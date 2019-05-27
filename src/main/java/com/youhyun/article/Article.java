@@ -1,4 +1,4 @@
-package article;
+package com.youhyun.article;
 
 public class Article {
 
