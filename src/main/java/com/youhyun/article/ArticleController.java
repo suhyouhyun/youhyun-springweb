@@ -81,7 +81,7 @@ public class ArticleController {
 			@SessionAttribute("MEMBER") Member member, Model model) {
 		Article article = articleDao.getArticle(articleId);
 		if (!article.getUserId().equals(member.getMemberId())) {
-			logger.debug("{}의 글이 아닙니다.", member.getName());
+			logger.debug("X", member.getName());
 			return "article/updateX";
 			//return "redirect:/app/article/view?articleId=" + articleId;
 		}
@@ -109,7 +109,7 @@ public class ArticleController {
 			@SessionAttribute("MEMBER") Member member) {
 		Article article = articleDao.getArticle(articleId);
 		if (!article.getUserId().equals(member.getMemberId())) {
-			logger.debug("{}의 글이 아닙니다.", member.getName());
+			logger.debug("X", member.getName());
 			return "article/deleteX";
 		}
 		logger.debug("{}번째 글을 삭제하였습니당.", article.getArticleId());
