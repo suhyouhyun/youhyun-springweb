@@ -1,6 +1,7 @@
 package com.youhyun.letter;
 
 public class Letter {
+
 	String letterId;
 	String title;
 	String content;
@@ -74,16 +75,20 @@ public class Letter {
 		this.cdate = cdate;
 	}
 	
+	
 	public String getContentHtml() {
 		if (content != null)
 			return content.replace("\n", "<br/>");
 		return null;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Letter [letterId=" + letterId + ", title=" + title + ", content=" + content + ", senderId=" + senderId
-				+ ", senderName=" + senderName + ", receiverId=" + receiverId + ", receivername=" + receiverName
-				+ ", cdate=" + cdate + "]\n";
+		return "Letter [letterId=" + letterId + ", title=" + title
+				+ ", content=" + content + ", senderId=" + senderId
+				+ ", senderName=" + senderName + ", receiverId=" + receiverId
+				+ ", receiverName=" + receiverName + ", cdate=" + cdate + "]";
 	}
+
 }
