@@ -35,6 +35,12 @@
 	<p>
 		<a href="./app/article/list">[게시판]</a>
 	</p>
+	<p>
+		<a href="./app/letter/ListSend">[보낸 메일함]</a>
+	</p>
+	<p>
+		<a href="./app/letter/ListReceive">[받은 메일함]</a>
+</p>
 </body>
 </head>
 </html>
