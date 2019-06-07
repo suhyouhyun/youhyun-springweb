@@ -54,14 +54,14 @@ public class ArticleController {
 	/**
 	 * 글 등록 화면
 	 */
-	@GetMapping("/article/addForm")
+	@GetMapping("/article/s/addForm")
 	public String articleAddForm(HttpSession session) {
 		Object memberObj = session.getAttribute("MEMBER");
 		if (memberObj == null)
 			// 세션에 MEMBER가 없을 경우 로그인 화면으로
 			return "login/loginForm";
 
-		return "article/addForm";
+		return "article/s/addForm";
 	}
 
 	/**
@@ -76,17 +76,17 @@ public class ArticleController {
 		return "redirect:/app/article/list";
 	}
 	
-	@GetMapping("/article/updateForm")
+	@GetMapping("/article/s/updateForm")
 	public String articleUpdateForm(@RequestParam("articleId") String articleId,
 			@SessionAttribute("MEMBER") Member member, Model model) {
 		Article article = articleDao.getArticle(articleId);
 		if (!article.getUserId().equals(member.getMemberId())) {
 			logger.debug("X", member.getName());
-			return "article/updateX";
+			return "article/s/updateX";
 			//return "redirect:/app/article/view?articleId=" + articleId;
 		}
 		model.addAttribute("article", article);
-		return "article/updateForm";
+		return "article/s/updateForm";
 	}
 	
 	//
@@ -98,29 +98,29 @@ public class ArticleController {
 	}
 	
 	//
-	@PostMapping("/article/updateX")
+	@PostMapping("/article/s/updateX")
 	public String updateFail() {
-		return "article/updateX";
+		return "article/s/updateX";
 	}
 
 	
-	@GetMapping("/article/delete")
+	@GetMapping("/article/s/delete")
 	public String articleDelete(@RequestParam("articleId") String articleId, 
 			@SessionAttribute("MEMBER") Member member) {
 		Article article = articleDao.getArticle(articleId);
 		if (!article.getUserId().equals(member.getMemberId())) {
 			logger.debug("X", member.getName());
-			return "article/deleteX";
+			return "article/s/deleteX";
 		}
 		logger.debug("{}번째 글을 삭제하였습니당.", article.getArticleId());
 		articleDao.deleteArticle(articleId);
-		return "article/delete";
+		return "article/s/delete";
 	}
 	
 	//
-	@GetMapping("/article/deleteX")
+	@GetMapping("/article/s/deleteX")
 	public String deleteFail() {
-		return "article/deleteX";
+		return "article/s/deleteX";
 	}
 }
 	

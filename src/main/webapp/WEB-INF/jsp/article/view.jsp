@@ -22,8 +22,8 @@
 	<p>${article.contentHtml }</p>
 	<hr />
 		<p>
-			<a href="./app/article/updateForm?articleId=${article.articleId }">글 수정</a>
-			<a href="./app/article/delete?articleId=${article.articleId }">글 삭제</a>
+			<a href="./app/article/s/updateForm?articleId=${article.articleId }">글 수정</a>
+			<a href="./app/article/s/delete?articleId=${article.articleId }">글 삭제</a>
 </p>
 </body>
 </html>
